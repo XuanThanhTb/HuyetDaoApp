@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/points"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Points" />
+    <item
+        android:id="@+id/reference"
+        android:icon="@drawable/ic_bookmark_border_black_24dp"
+        android:title="Reference" />
+    <item
+        android:id="@+id/tests"
+        android:icon="@drawable/ic_av_timer_black_24dp"
+        android:title="Tests" />
+    <item
+        android:id="@+id/videos"
+        android:icon="@drawable/ic_videocam_black_24dp"
+        android:title="Videos" />
+    <item
+        android:id="@+id/my_moa"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="My MOA" />
+</menu>
