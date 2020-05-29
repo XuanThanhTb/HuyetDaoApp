@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -49,8 +47,6 @@ class PoinsFragment : Fragment() {
 
     }
 
-
-
     inner class MyAdapterTouch(var listTouch: ArrayList<String>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -58,14 +54,7 @@ class PoinsFragment : Fragment() {
             var viewHolder = TouchViewHolder(itemView)
             var indexTouch = viewHolder.adapterPosition
             itemView.setOnClickListener {
-//                val frag2 = DetailPointsFragment()
-//                val bundle = Bundle()
-//                bundle.putString("detailPoint",indexTouch.toInt().toString())
-//                frag2.arguments = bundle
-//                val data2 = fragmentManager
-//                val fragmentTransaction = data2?.beginTransaction()
-//                fragmentTransaction?.replace(R.id.detailPointFragment, frag2)
-//                fragmentTransaction?.commit()
+                Navigation.findNavController(it).navigate(R.id.detailHomeFragment)
             }
             return viewHolder
         }
