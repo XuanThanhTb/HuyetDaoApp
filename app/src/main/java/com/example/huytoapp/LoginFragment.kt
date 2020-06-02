@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
 
-    val listPasswork: ArrayList<String> = arrayListOf<String>("123123", "123456")
+    val listPasswork: ArrayList<String> = arrayListOf<String>("123123", "123456", "123456")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +34,19 @@ class LoginFragment : Fragment() {
             var passwork = passText.text.toString()
             var isCheckLogin:Boolean = false
             if(isCheckLogin == false){
-                for (item in 0..1){
+                for (item in 0..2){
                     if (passwork == listPasswork[item]){
                         passText.setText("")
+                        listPasswork.removeAt(item)
                         isCheckLogin = true
                         var bundle = Bundle().apply {
                             putBoolean("check", isCheckLogin)
                         }
                         Navigation.findNavController(it).navigate(R.id.homeFragment, bundle)
-                        return@setOnClickListener
+                        continue
                     }else{
                         Toast.makeText(activity, "Mat khau dang nhap sai roi", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
                     }
                 }
             }else{

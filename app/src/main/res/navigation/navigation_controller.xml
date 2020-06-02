@@ -21,10 +21,26 @@
         <action
             android:id="@+id/action_homeFragment_to_detailHomeFragment"
             app:destination="@id/detailHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailNoteFragment"
+            app:destination="@id/detailNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailHomeFragment"
         android:name="com.example.huytoapp.DetailHomeFragment"
         android:label="fragment_detail_home"
         tools:layout="@layout/fragment_detail_home" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.huytoapp.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/detailNoteFragment"
+        android:name="com.example.huytoapp.DetailNoteFragment"
+        android:label="fragment_detail_note"
+        tools:layout="@layout/fragment_detail_note" />
 </navigation>
