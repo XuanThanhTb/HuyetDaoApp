@@ -4,27 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_detail_home.*
-
 
 class DetailHomeFragment : Fragment() {
 
+    var listDataHuyet: ArrayList<DataHuyet> = arrayListOf(
+        DataHuyet(id = 1, color = "#FFEB3B", nameHuyet = "Thừa Khấp"),
+        DataHuyet(id = 2, color = "#FFEB3B", nameHuyet = "Thừa Khấp"),
+        DataHuyet(id = 1, color = "#89F809", nameHuyet = "Nhân trung"),
+        DataHuyet(id = 2, color = "#89F809", nameHuyet = "Phủ đột"))
     var touchData: String? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val actBar = (activity as AppCompatActivity).supportActionBar
-////        actBar?.setDisplayHomeAsUpEnabled(true) // cho hiển thị nút pop
-////        actBar?.setDisplayShowHomeEnabled(true)
-////        actBar?.setDisplayUseLogoEnabled(false)
-////        actBar?.setTitle("Fragment 1 toolbar")
-////        actBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_keyboard_backspace_24)
-////        actBar?.subtitle = ""
         arguments?.let {
             touchData = it?.getString("detailHome")
         }
+
     }
 
     override fun onCreateView(
@@ -42,12 +42,25 @@ class DetailHomeFragment : Fragment() {
         }else{
             toolbar_home_title.text = "Chi tiết châm cứu"
         }
-
-//        if (touchData != null) (activity as AppCompatActivity).supportActionBar?.title = "${touchData}" else (activity as AppCompatActivity).supportActionBar?.title = "Châm cứu"
+        onPushDataHuyet(idButton = buttonDenHuyet, dataHuyetDao = "Thừa Khấp")
+        onPushDataHuyet(idButton = buttonXanhHuyet, dataHuyetDao = "Nhân Trung")
     }
-    companion object {
 
+    fun onPushDataHuyet(dataHuyetDao: String?, idButton: Button){
+        idButton.setOnClickListener {
+            var bundle = Bundle().apply {
+                putString("phacdo", dataHuyetDao)
+            }
+            Navigation.findNavController(it).navigate(R.id.phacDoHuyetFragment, bundle)
+        }
+    }
+
+
+    companion object {
         @JvmStatic
         fun newInstance() = DetailHomeFragment()
     }
 }
+
+class DataHuyet(var id: Int?, var color: String?, var nameHuyet: String?)
+

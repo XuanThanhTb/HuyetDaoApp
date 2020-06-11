@@ -32,7 +32,11 @@
         android:id="@+id/detailHomeFragment"
         android:name="com.example.huytoapp.DetailHomeFragment"
         android:label="fragment_detail_home"
-        tools:layout="@layout/fragment_detail_home" />
+        tools:layout="@layout/fragment_detail_home" >
+        <action
+            android:id="@+id/action_detailHomeFragment_to_phacDoHuyetFragment"
+            app:destination="@id/phacDoHuyetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.huytoapp.SearchFragment"
@@ -43,4 +47,18 @@
         android:name="com.example.huytoapp.DetailNoteFragment"
         android:label="fragment_detail_note"
         tools:layout="@layout/fragment_detail_note" />
+    <fragment
+        android:id="@+id/phacDoHuyetFragment"
+        android:name="com.example.huytoapp.PhacDoHuyetFragment"
+        android:label="fragment_phac_do_huyet"
+        tools:layout="@layout/fragment_phac_do_huyet" >
+        <action
+            android:id="@+id/action_phacDoHuyetFragment_to_detailAcupuncturePointsFragment"
+            app:destination="@id/detailAcupuncturePointsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAcupuncturePointsFragment"
+        android:name="com.example.huytoapp.DetailAcupuncturePointsFragment"
+        android:label="fragment_detail_acupuncture_points"
+        tools:layout="@layout/fragment_detail_acupuncture_points" />
 </navigation>

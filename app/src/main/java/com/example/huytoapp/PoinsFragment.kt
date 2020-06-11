@@ -42,26 +42,11 @@ class PoinsFragment : Fragment() {
         recyclerViewTouch.adapter = MyAdapterTouch(listTouch)
     }
 
-     fun passData(data: String){
-
-
-    }
-
     inner class MyAdapterTouch(var listTouch: ArrayList<String>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        var indexListTouch = 0
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var itemView = LayoutInflater.from(parent.context).inflate(R.layout.cell_fragment_points, parent, false)
             var viewHolder = TouchViewHolder(itemView)
-            var indexTouch = viewHolder.adapterPosition
-            itemView.setOnClickListener {
-                    var bundle = Bundle().apply {
-                        putString("detailHome", listTouch[6])
-                        print(indexTouch)
-                }
-
-                Navigation.findNavController(it).navigate(R.id.detailHomeFragment, bundle)
-            }
             return viewHolder
         }
 
@@ -70,10 +55,14 @@ class PoinsFragment : Fragment() {
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             if (holder is TouchViewHolder){
                 holder.itemView.touchView.text = listTouch[position]
-                indexListTouch = position.toInt()
+                holder.itemView.setOnClickListener {
+                    var bundle = Bundle().apply {
+                        putString("detailHome", listTouch[position])
+                    }
+                    Navigation.findNavController(it).navigate(R.id.detailHomeFragment, bundle)
+                }
             }
         }
-
     }
 
     inner class TouchViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
