@@ -1,18 +1,23 @@
 package com.example.huytoapp
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.huytoapp.dp.Huyet
+import com.example.huytoapp.dp.HuyetDataBase
+import com.example.huytoapp.ui.BaseFragment
+import com.example.huytoapp.ui.toast
 import kotlinx.android.synthetic.main.cell_phac_do_huyet.view.*
 import kotlinx.android.synthetic.main.fragment_phac_do_huyet.*
+import kotlinx.coroutines.launch
 
-class PhacDoHuyetFragment : Fragment() {
+class PhacDoHuyetFragment : BaseFragment() {
 
     var dataHuyetDao: String? = null
+    private var huyet: Huyet? = null
 
     val list: ArrayList<String> = ArrayList()
 
@@ -35,11 +40,68 @@ class PhacDoHuyetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
+        button_save_data.setOnClickListener { view ->
+            val maBenhNhan = editTextPersonCode.text.toString().trim()
+            val tenBenhNhan = editTextPersonName.text.toString().trim()
+            val gioiTinh = editTextGioi.text.toString().trim()
+            val tuoi = editTextOld.text.toString().trim()
+//            val time =
+            if (maBenhNhan.isEmpty()) {
+                editTextPersonCode.error = "title required"
+                editTextPersonCode.requestFocus()
+                return@setOnClickListener
+            }
+            if (tenBenhNhan.isEmpty()) {
+                editTextPersonName.error = "title required"
+                editTextPersonName.requestFocus()
+                return@setOnClickListener
+            }
+            if (gioiTinh.isEmpty()) {
+                editTextGioi.error = "title required"
+                editTextGioi.requestFocus()
+                return@setOnClickListener
+            }
+            if (tuoi.isEmpty()) {
+                editTextOld.error = "title required"
+                editTextOld.requestFocus()
+                return@setOnClickListener
+            }
+
+            launch {
+
+                context?.let {
+                    val mHuyet = Huyet(maBenhNhan, tenBenhNhan, gioiTinh, tuoi, gioiTinh)
+                    if (huyet == null) {
+                        HuyetDataBase(it).getHuyetDao().addHuyet(mHuyet)
+                        it.toast("Note Save")
+                    } else {
+                        mHuyet.id = huyet!!.id
+                        HuyetDataBase(it).getHuyetDao().updateHuyet(mHuyet)
+                        it.toast("Note Updated")
+                    }
+                    val action = PhacDoHuyetFragmentDirections.actionPhacDoHuyetFragmentToHomeFragment() //action chuyển tới màn nào
+                    Navigation.findNavController(view).navigate(action)
+                }
+            }
+        }
     }
 
     private fun setUpRecyclerView() {
         recyclerViewPhacDo.layoutManager = LinearLayoutManager(context)
         recyclerViewPhacDo.adapter = PhacDoHuyet(list)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+//            R.id.save_note -> if (note != null) deleteNote() else context?.toast("Cannot Delete")
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.item_menu_note, menu)
     }
 
     companion object {

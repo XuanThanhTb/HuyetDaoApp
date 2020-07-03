@@ -181,7 +181,20 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewPhacDo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_save_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:tint="@android:color/white"
+            app:backgroundTint="#E91E63"
+            android:src="@drawable/ic_baseline_check_24" />
     </LinearLayout>
 
 

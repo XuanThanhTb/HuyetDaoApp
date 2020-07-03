@@ -1,14 +1,17 @@
 package com.example.huytoapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.huytoapp.dp.HuyetDataBase
+import com.example.huytoapp.ui.BaseFragment
+import com.example.huytoapp.ui.NotesAdapter
 import kotlinx.android.synthetic.main.fragment_note.*
+import kotlinx.coroutines.launch
 
-class NoteFragment : Fragment() {
+class NoteFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,9 +27,19 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buttonNote.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.detailNoteFragment)
+        setUpRecyclerViewNote()
+        launch {
+            context?.let {
+                val huyet = HuyetDataBase(it).getHuyetDao().getAllHuyets()
+                recycler_view_notes.adapter = NotesAdapter(huyet)
+            }
         }
+    }
+
+    private fun setUpRecyclerViewNote() {
+        recycler_view_notes.setHasFixedSize(true)
+        recycler_view_notes.layoutManager =
+            StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
     }
 
 }
