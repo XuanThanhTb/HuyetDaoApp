@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -20,8 +22,9 @@ class HomeFragment : Fragment() {
             isCheckLogin = it.getBoolean("check")
         }
     }
+
     private fun makeCurrentFragment(fragment: Fragment) {
-       requireActivity().supportFragmentManager.beginTransaction().apply {
+        requireActivity().supportFragmentManager.beginTransaction().apply {
             replace(R.id.homeFragment, fragment)
             commit()
         }
