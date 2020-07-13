@@ -1,6 +1,7 @@
 package com.example.huytoapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +43,7 @@ class LoginFragment : Fragment() {
                             putBoolean("check", isCheckLogin)
                         }
                         Navigation.findNavController(it).navigate(R.id.homeFragment, bundle)
+                        Log.d("chieuhv","bundle :"+bundle)
                         return@setOnClickListener
                     }else{
                         Toast.makeText(activity, "Mat khau dang nhap sai roi", Toast.LENGTH_SHORT).show()

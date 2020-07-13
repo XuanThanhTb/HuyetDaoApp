@@ -9,7 +9,7 @@ import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class HomeFragment : BaseFragment() {
+ class HomeFragment : BaseFragment() {
 
     var isCheckLogin: Boolean? = null
     var pointsFragment = PoinsFragment()
@@ -20,9 +20,10 @@ class HomeFragment : BaseFragment() {
         arguments?.let {
             isCheckLogin = it.getBoolean("check")
         }
+
     }
 
-    private fun makeCurrentFragment(fragment: Fragment) {
+    fun makeCurrentFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.beginTransaction().apply {
             replace(R.id.homeFragment, fragment)
             commit()
@@ -33,7 +34,7 @@ class HomeFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        makeCurrentFragment(pointsFragment)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -41,6 +42,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
+
                 R.id.points -> makeCurrentFragment(pointsFragment)
                 R.id.note -> makeCurrentFragment(note)
             }
@@ -51,5 +53,6 @@ class HomeFragment : BaseFragment() {
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
+
     }
 }
