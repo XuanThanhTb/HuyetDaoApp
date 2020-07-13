@@ -1,6 +1,7 @@
-package com.example.huytoapp.dp
+package com.example.huytoapp.dp.thong_tin_benh_nhan
 
 import androidx.room.*
+import com.example.huytoapp.dp.thong_tin_benh_nhan.Huyet
 
 @Dao
 interface HuyetDao {
@@ -20,3 +21,4 @@ interface HuyetDao {
     @Delete
     suspend fun deleteHuyet(huyet: Huyet)
 }
+

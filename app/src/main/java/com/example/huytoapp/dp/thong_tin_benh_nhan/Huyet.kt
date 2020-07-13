@@ -1,8 +1,8 @@
-package com.example.huytoapp.dp
+package com.example.huytoapp.dp.thong_tin_benh_nhan
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.huytoapp.dp.ButtonHuyet.ButtonHuyet
 import java.io.Serializable
 
 @Entity
@@ -12,7 +12,11 @@ data class Huyet(
     val gioiTinh: String,
     val tuoi: String,
     val time: String
-):Serializable{
+//    ,
+//    val listDataHuyet: List<ListButtonHuyet>
+) : Serializable {
     @PrimaryKey(autoGenerate = true)
-    var id : Int = 0
+    var id: Int = 0
 }
+
+

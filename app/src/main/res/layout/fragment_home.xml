@@ -8,41 +8,29 @@
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
     tools:context=".HomeFragment">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_home"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary">
-        <TextView
-            android:id="@+id/toolbar_home_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Châm cứu"
-            android:textColor="@android:color/white"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_gravity="start" />
-    </androidx.appcompat.widget.Toolbar>
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"
-        android:layout_below="@+id/toolbar_home"
-        android:layout_marginTop="-56dp" />
+        android:padding="1dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:showIn="@layout/activity_main" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
         app:itemHorizontalTranslationEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/botton_item_menu">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
+        app:menu="@menu/botton_item_menu" />
 </RelativeLayout>
+

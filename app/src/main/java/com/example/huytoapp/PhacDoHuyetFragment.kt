@@ -1,18 +1,23 @@
 package com.example.huytoapp
 
+import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
+import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.huytoapp.dp.Huyet
-import com.example.huytoapp.dp.HuyetDataBase
-import com.example.huytoapp.ui.BaseFragment
-import com.example.huytoapp.ui.toast
-import kotlinx.android.synthetic.main.cell_phac_do_huyet.view.*
+import com.example.huytoapp.dp.thong_tin_benh_nhan.Huyet
+import com.example.huytoapp.dp.thong_tin_benh_nhan.HuyetDataBase
+import com.example.huytoapp.dp.thong_tin_benh_nhan.ButtonHuyetDataBase
+import com.example.huytoapp.ui.ButtonHuyet.ButtonHuyetAdapter
+import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
+import com.example.huytoapp.ui.ThongTinBenhNhan.NotesAdapter
+import com.example.huytoapp.ui.ThongTinBenhNhan.toast
+import kotlinx.android.synthetic.main.fragment_note.*
 import kotlinx.android.synthetic.main.fragment_phac_do_huyet.*
 import kotlinx.coroutines.launch
+
 
 class PhacDoHuyetFragment : BaseFragment() {
 
@@ -23,10 +28,10 @@ class PhacDoHuyetFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            dataHuyetDao = it?.getString("phacdo")
-            if (dataHuyetDao != null) list.add(dataHuyetDao.toString()) else return@let
-        }
+//        arguments?.let {
+//            dataHuyetDao = it?.getString("phacdo")
+//            if (dataHuyetDao != null) list.add(dataHuyetDao.toString()) else return@let
+//        }
     }
 
     override fun onCreateView(
@@ -37,63 +42,122 @@ class PhacDoHuyetFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_phac_do_huyet, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpRecyclerView()
+        //lỗi
+        setUpRecyclerViewListButtonHuyet()
+        launch {
+            context?.let {
+                var listButtonHuyet = ButtonHuyetDataBase(
+                    it
+                ).getButtonHuyetDao().getAllButtonHuyet()
+
+                recyclerViewPhacDo.adapter =
+                    ButtonHuyetAdapter(listButtonHuyet, activity as MainActivity)
+            }
+        }
+        launch {
+            context?.let {
+                var huyet = HuyetDataBase(
+                    it
+                ).getHuyetDao().getAllHuyets()
+                recycler_view_notes.adapter =
+                    NotesAdapter(huyet)
+            }
+        }
+
         button_save_data.setOnClickListener { view ->
             val maBenhNhan = editTextPersonCode.text.toString().trim()
             val tenBenhNhan = editTextPersonName.text.toString().trim()
             val gioiTinh = editTextGioi.text.toString().trim()
             val tuoi = editTextOld.text.toString().trim()
-//            val time =
+            val chuanDoan = editTextChuanDoan.text.toString().trim()
             if (maBenhNhan.isEmpty()) {
-                editTextPersonCode.error = "title required"
+                editTextPersonCode.error = "Chưa có dữ liệu!"
                 editTextPersonCode.requestFocus()
                 return@setOnClickListener
             }
             if (tenBenhNhan.isEmpty()) {
-                editTextPersonName.error = "title required"
+                editTextPersonName.error = "Chưa có dữ liệu!"
                 editTextPersonName.requestFocus()
                 return@setOnClickListener
             }
             if (gioiTinh.isEmpty()) {
-                editTextGioi.error = "title required"
+                editTextGioi.error = "Chưa có dữ liệu!"
                 editTextGioi.requestFocus()
                 return@setOnClickListener
             }
             if (tuoi.isEmpty()) {
-                editTextOld.error = "title required"
+                editTextOld.error = "Chưa có dữ liệu!"
                 editTextOld.requestFocus()
+                return@setOnClickListener
+            }
+            if (chuanDoan.isEmpty()) {
+                editTextChuanDoan.error = "Chưa có dữ liệu!"
+                editTextChuanDoan.requestFocus()
                 return@setOnClickListener
             }
 
             launch {
 
                 context?.let {
-                    val mHuyet = Huyet(maBenhNhan, tenBenhNhan, gioiTinh, tuoi, gioiTinh)
+                    val mHuyet =
+                        Huyet(
+                            maBenhNhan,
+                            tenBenhNhan,
+                            gioiTinh,
+                            tuoi,
+                            gioiTinh
+                        )
                     if (huyet == null) {
-                        HuyetDataBase(it).getHuyetDao().addHuyet(mHuyet)
-                        it.toast("Note Save")
+                        HuyetDataBase(
+                            it
+                        ).getHuyetDao().addHuyet(mHuyet)
+                        it.toast("Dữ liệu của bệnh nhân đã được lưu!")
                     } else {
                         mHuyet.id = huyet!!.id
-                        HuyetDataBase(it).getHuyetDao().updateHuyet(mHuyet)
-                        it.toast("Note Updated")
+                        HuyetDataBase(
+                            it
+                        ).getHuyetDao().updateHuyet(mHuyet)
+                        it.toast("Dữ liệu của bệnh nhân đã được chỉnh sửa!")
                     }
-                    val action = PhacDoHuyetFragmentDirections.actionPhacDoHuyetFragmentToHomeFragment() //action chuyển tới màn nào
+                    val action =
+                        PhacDoHuyetFragmentDirections.actionPhacDoHuyetFragmentToHomeFragment() //action chuyển tới màn nào
                     Navigation.findNavController(view).navigate(action)
                 }
             }
         }
     }
 
-    private fun setUpRecyclerView() {
+    private fun deleteHuyet() {
+        AlertDialog.Builder(context).apply {
+            setTitle("Bạn có chắc chắn xóa nó không?")
+            setMessage("Bạn không thể hoàn tác thao tác này :(")
+            setPositiveButton("Yes") { _, _ ->
+                launch {
+                    HuyetDataBase(
+                        context
+                    ).getHuyetDao().deleteHuyet(huyet!!)
+                    val action =
+                        PhacDoHuyetFragmentDirections.actionPhacDoHuyetFragmentToHomeFragment()
+                    Navigation.findNavController(requireView()).navigate(action)
+                }
+            }
+            setNegativeButton("No") { _, _ ->
+
+            }
+        }.create().show()
+    }
+
+    private fun setUpRecyclerViewListButtonHuyet() {
+        recyclerViewPhacDo.setHasFixedSize(true)
         recyclerViewPhacDo.layoutManager = LinearLayoutManager(context)
-        recyclerViewPhacDo.adapter = PhacDoHuyet(list)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            R.id.save_note -> if (note != null) deleteNote() else context?.toast("Cannot Delete")
+            R.id.save_note -> if (huyet != null) deleteHuyet() else context?.toast("Cannot Delete")
         }
         return super.onOptionsItemSelected(item)
     }
@@ -111,23 +175,23 @@ class PhacDoHuyetFragment : BaseFragment() {
     }
 }
 
-class PhacDoHuyet(var list: java.util.ArrayList<String>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        var itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.cell_phac_do_huyet, parent, false)
-        var viewHolder = PhacDoViewHoloder(itemView)
-        return viewHolder
-    }
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is PhacDoViewHoloder) {
-            holder.itemView.textHuyetDao.text = list[position]
-            holder.itemView.textIndexHuyet.text = "${position + 1}" + "."
-        }
-    }
-}
-
-class PhacDoViewHoloder(itemView: View) : RecyclerView.ViewHolder(itemView)
+//class PhacDoHuyet(var list: java.util.ArrayList<String>) :
+//    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+//        var itemView =
+//            LayoutInflater.from(parent.context).inflate(R.layout.cell_phac_do_huyet, parent, false)
+//        var viewHolder = PhacDoViewHoloder(itemView)
+//        return viewHolder
+//    }
+//
+//    override fun getItemCount(): Int = list.size
+//
+//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+//        if (holder is PhacDoViewHoloder) {
+//            holder.itemView.textHuyetDao.text = list[position]
+//            holder.itemView.textIndexHuyet.text = "${position + 1}" + "."
+//        }
+//    }
+//}
+//
+//class PhacDoViewHoloder(itemView: View) : RecyclerView.ViewHolder(itemView)

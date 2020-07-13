@@ -1,4 +1,4 @@
-package com.example.huytoapp.ui
+package com.example.huytoapp.ui.ThongTinBenhNhan
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

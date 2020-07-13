@@ -23,13 +23,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@+id/deatilPatient"
         app:layout_constraintTop_toBottomOf="@+id/deatilPatient">
 
         <TextView
-            android:id="@+id/codePatient "
+            android:id="@+id/codePatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
             android:layout_marginTop="24dp"
             android:padding="8dp"
             android:text="Mã BN:"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.048"
@@ -56,22 +56,22 @@
             android:ems="10"
             android:hint="Nhập mã bệnh nhân"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/codePatient "
+            app:layout_constraintBottom_toBottomOf="@+id/codePatient"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/codePatient "
+            app:layout_constraintStart_toEndOf="@+id/codePatient"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/namePatient "
+            android:id="@+id/namePatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
             android:text="TÊN BN:"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/codePatient "
-            app:layout_constraintTop_toBottomOf="@+id/codePatient " />
+            app:layout_constraintStart_toStartOf="@+id/codePatient"
+            app:layout_constraintTop_toBottomOf="@+id/codePatient" />
 
         <EditText
             android:id="@+id/editTextPersonName"
@@ -85,10 +85,11 @@
             android:ems="10"
             android:hint="Tên bệnh nhân"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/namePatient "
+            app:layout_constraintBottom_toBottomOf="@+id/namePatient"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/codePatient "
-            app:layout_constraintTop_toBottomOf="@+id/editTextPersonCode" />
+            app:layout_constraintStart_toEndOf="@+id/codePatient"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPersonCode"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/gioiTinh"
@@ -97,10 +98,10 @@
             android:layout_marginTop="8dp"
             android:padding="8dp"
             android:text="GIỚI:"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/namePatient "
-            app:layout_constraintTop_toBottomOf="@+id/namePatient " />
+            app:layout_constraintStart_toStartOf="@+id/namePatient"
+            app:layout_constraintTop_toBottomOf="@+id/namePatient" />
 
         <EditText
             android:id="@+id/editTextGioi"
@@ -114,7 +115,7 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="@+id/gioiTinh"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/codePatient "
+            app:layout_constraintStart_toEndOf="@+id/codePatient"
             app:layout_constraintTop_toBottomOf="@+id/editTextPersonName" />
 
         <TextView
@@ -122,12 +123,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
             android:padding="8dp"
             android:text="TUỔI:"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/gioiTinh"
             app:layout_constraintTop_toBottomOf="@+id/gioiTinh" />
 
@@ -143,13 +142,42 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="@+id/old"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/codePatient "
+            app:layout_constraintStart_toEndOf="@+id/codePatient"
             app:layout_constraintTop_toBottomOf="@+id/editTextGioi" />
+
+        <TextView
+            android:id="@+id/chuanDoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:padding="8dp"
+            android:text="CHUẨN ĐOÁN:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/old"
+            app:layout_constraintTop_toBottomOf="@+id/old" />
+
+        <EditText
+            android:id="@+id/editTextChuanDoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="Chuẩn đoán"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/codePatient"
+            app:layout_constraintTop_toBottomOf="@+id/editTextOld" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -189,12 +217,14 @@
             android:id="@+id/button_save_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_check_24"
             android:tint="@android:color/white"
-            app:backgroundTint="#E91E63"
-            android:src="@drawable/ic_baseline_check_24" />
+            app:backgroundTint="#E91E63" />
     </LinearLayout>
 
 

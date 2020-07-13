@@ -1,6 +1,7 @@
-package com.example.huytoapp.ui
+package com.example.huytoapp.ui.ThongTinBenhNhan
 
 import android.content.Context
+import android.view.Gravity
 import android.widget.Toast
 
 fun Context.toast(message: String) {

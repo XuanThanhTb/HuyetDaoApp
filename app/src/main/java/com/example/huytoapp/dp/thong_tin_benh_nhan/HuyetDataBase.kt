@@ -1,4 +1,4 @@
-package com.example.huytoapp.dp
+package com.example.huytoapp.dp.thong_tin_benh_nhan
 
 import android.content.Context
 import androidx.room.Database
@@ -20,11 +20,15 @@ abstract class HuyetDataBase : RoomDatabase() {
 
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buildDataBase((context)).also {
-                instance = it
+        operator fun invoke(context: Context) = instance
+            ?: synchronized(LOCK) {
+                instance
+                    ?: buildDataBase(
+                        (context)
+                    ).also {
+                        instance = it
+                    }
             }
-        }
 
         private fun buildDataBase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
@@ -32,4 +36,5 @@ abstract class HuyetDataBase : RoomDatabase() {
             "huyetdaodatabase"
         ).build()
     }
+
 }

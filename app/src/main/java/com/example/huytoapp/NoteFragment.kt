@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.huytoapp.dp.HuyetDataBase
-import com.example.huytoapp.ui.BaseFragment
-import com.example.huytoapp.ui.NotesAdapter
+import com.example.huytoapp.dp.thong_tin_benh_nhan.HuyetDataBase
+import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
+import com.example.huytoapp.ui.ThongTinBenhNhan.NotesAdapter
 import kotlinx.android.synthetic.main.fragment_note.*
 import kotlinx.coroutines.launch
 
@@ -30,8 +30,11 @@ class NoteFragment : BaseFragment() {
         setUpRecyclerViewNote()
         launch {
             context?.let {
-                val huyet = HuyetDataBase(it).getHuyetDao().getAllHuyets()
-                recycler_view_notes.adapter = NotesAdapter(huyet)
+                var huyet = HuyetDataBase(
+                    it
+                ).getHuyetDao().getAllHuyets()
+                recycler_view_notes.adapter =
+                    NotesAdapter(huyet)
             }
         }
     }
@@ -39,7 +42,7 @@ class NoteFragment : BaseFragment() {
     private fun setUpRecyclerViewNote() {
         recycler_view_notes.setHasFixedSize(true)
         recycler_view_notes.layoutManager =
-            StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
     }
 
 }

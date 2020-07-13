@@ -1,16 +1,15 @@
 package com.example.huytoapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.fragment.app.Fragment
+import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+
+class HomeFragment : BaseFragment() {
 
     var isCheckLogin: Boolean? = null
     var pointsFragment = PoinsFragment()
