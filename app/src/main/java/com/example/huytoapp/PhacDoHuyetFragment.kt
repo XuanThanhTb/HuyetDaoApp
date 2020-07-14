@@ -4,9 +4,11 @@ import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.huytoapp.dp.thong_tin_benh_nhan.Huyet
 import com.example.huytoapp.dp.thong_tin_benh_nhan.HuyetDataBase
 import com.example.huytoapp.dp.thong_tin_benh_nhan.ButtonHuyetDataBase
@@ -14,6 +16,7 @@ import com.example.huytoapp.ui.ButtonHuyet.ButtonHuyetAdapter
 import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import com.example.huytoapp.ui.ThongTinBenhNhan.NotesAdapter
 import com.example.huytoapp.ui.ThongTinBenhNhan.toast
+import kotlinx.android.synthetic.main.cell_phac_do_huyet.view.*
 import kotlinx.android.synthetic.main.fragment_note.*
 import kotlinx.android.synthetic.main.fragment_phac_do_huyet.*
 import kotlinx.coroutines.launch
@@ -28,10 +31,10 @@ class PhacDoHuyetFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            dataHuyetDao = it?.getString("phacdo")
-//            if (dataHuyetDao != null) list.add(dataHuyetDao.toString()) else return@let
-//        }
+        arguments?.let {
+            dataHuyetDao = it?.getString("phacdo")
+            if (dataHuyetDao != null) list.add(dataHuyetDao.toString()) else return@let
+        }
     }
 
     override fun onCreateView(
@@ -47,25 +50,17 @@ class PhacDoHuyetFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         //lỗi
         setUpRecyclerViewListButtonHuyet()
-        launch {
-            context?.let {
-                var listButtonHuyet = ButtonHuyetDataBase(
-                    it
-                ).getButtonHuyetDao().getAllButtonHuyet()
+//        launch {
+//            context?.let {
+//                var listButtonHuyet = ButtonHuyetDataBase(
+//                    it
+//                ).getButtonHuyetDao().getAllButtonHuyet()
+//
+//                recyclerViewPhacDo.adapter =
+//                    ButtonHuyetAdapter(listButtonHuyet, activity as MainActivity)
+//            }
+//        }
 
-                recyclerViewPhacDo.adapter =
-                    ButtonHuyetAdapter(listButtonHuyet, activity as MainActivity)
-            }
-        }
-        launch {
-            context?.let {
-                var huyet = HuyetDataBase(
-                    it
-                ).getHuyetDao().getAllHuyets()
-                recycler_view_notes.adapter =
-                    NotesAdapter(huyet)
-            }
-        }
 
         button_save_data.setOnClickListener { view ->
             val maBenhNhan = editTextPersonCode.text.toString().trim()
@@ -151,8 +146,9 @@ class PhacDoHuyetFragment : BaseFragment() {
     }
 
     private fun setUpRecyclerViewListButtonHuyet() {
-        recyclerViewPhacDo.setHasFixedSize(true)
+//        recyclerViewPhacDo.setHasFixedSize(true)
         recyclerViewPhacDo.layoutManager = LinearLayoutManager(context)
+        recyclerViewPhacDo.adapter = PhacDoHuyet(list, activity as MainActivity)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -175,23 +171,28 @@ class PhacDoHuyetFragment : BaseFragment() {
     }
 }
 
-//class PhacDoHuyet(var list: java.util.ArrayList<String>) :
-//    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-//        var itemView =
-//            LayoutInflater.from(parent.context).inflate(R.layout.cell_phac_do_huyet, parent, false)
-//        var viewHolder = PhacDoViewHoloder(itemView)
-//        return viewHolder
-//    }
-//
-//    override fun getItemCount(): Int = list.size
-//
-//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        if (holder is PhacDoViewHoloder) {
-//            holder.itemView.textHuyetDao.text = list[position]
-//            holder.itemView.textIndexHuyet.text = "${position + 1}" + "."
-//        }
-//    }
-//}
-//
-//class PhacDoViewHoloder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class PhacDoHuyet(var list: java.util.ArrayList<String>, val activity: MainActivity) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        var itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.cell_phac_do_huyet, parent, false)
+        var viewHolder = PhacDoViewHoloder(itemView)
+        return viewHolder
+    }
+
+    override fun getItemCount(): Int = list.size
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is PhacDoViewHoloder) {
+            holder.itemView.textHuyetDao.text = list[position]
+            holder.itemView.textIndexHuyet.text = "${position + 1}" + "."
+        }
+
+        holder.itemView.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.contentHuyetFragment)
+            Toast.makeText(activity, "${list[position]}", Toast.LENGTH_LONG).show()
+        }
+    }
+}
+
+class PhacDoViewHoloder(itemView: View) : RecyclerView.ViewHolder(itemView)

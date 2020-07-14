@@ -9,16 +9,9 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.huytoapp.dp.ButtonHuyet.ButtonHuyet
-import com.example.huytoapp.dp.thong_tin_benh_nhan.ButtonHuyetDataBase
-import com.example.huytoapp.dp.thong_tin_benh_nhan.HuyetDataBase
 import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
-import com.example.huytoapp.ui.ThongTinBenhNhan.NotesAdapter
-import com.example.huytoapp.ui.ThongTinBenhNhan.toast
 import kotlinx.android.synthetic.main.cell_detail_home_anh_mot.view.*
 import kotlinx.android.synthetic.main.fragment_detail_home.*
-import kotlinx.android.synthetic.main.fragment_note.*
-import kotlinx.coroutines.launch
 
 class DetailHomeFragment : BaseFragment() {
 
@@ -74,7 +67,6 @@ class DetailHomeFragment : BaseFragment() {
         var activity: MainActivity
     ) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -136,30 +128,55 @@ class DetailHomeFragment : BaseFragment() {
                     dataHuyetDao = "Thừa mang"
                 )
             }
+            if (listAnh[position] == 2) {
+
+            }
+            if (listAnh[position] == 3) {
+
+            }
+            if (listAnh[position] == 4) {
+
+            }
+            if (listAnh[position] == 5) {
+
+            }
+            if (listAnh[position] == 6) {
+
+            }
+            if (listAnh[position] == 7) {
+
+            }
+            if (listAnh[position] == 8) {
+
+            }
+            if (listAnh[position] == 9) {
+
+            }
         }
+
         fun onPushDataHuyet(dataHuyetDao: String?, idButton: Button?) {
-            idButton?.setOnClickListener { view ->
+            idButton?.setOnClickListener {
                 Toast.makeText(activity, "action", Toast.LENGTH_LONG).show()
-                launch {
-                    context?.let {
-                        if (dataHuyetDao != null) {
-                            val mListButtonHuyet = ButtonHuyet(tenHuyet = dataHuyetDao)
-                            it.toast("Đã thêm dữ liệu!")
-                            ButtonHuyetDataBase(it).getButtonHuyetDao()
-                                .addButtonHuyet(mListButtonHuyet)
-                            val action =
-                                DetailHomeFragmentDirections.actionDetailHomeFragmentToPhacDoHuyetFragment() //action chuyển tới màn nào
-                            Navigation.findNavController(view).navigate(action)
-                        }
+//                launch {
+//                    context?.let {
+//                        if (dataHuyetDao != null) {
+//                            val mListButtonHuyet = ButtonHuyet(tenHuyet = dataHuyetDao)
+//                            it.toast("Đã thêm dữ liệu!")
+//                            ButtonHuyetDataBase(it).getButtonHuyetDao()
+//                                .addButtonHuyet(mListButtonHuyet)
+//                            val action =
+//                                DetailHomeFragmentDirections.actionDetailHomeFragmentToPhacDoHuyetFragment() //action chuyển tới màn nào
+//                            Navigation.findNavController(view).navigate(action)
+//                        }
 //
-////                        var bundleDataHuyet = Bundle().apply {
-////                            putString("phacdo", dataHuyetDao ?: "data")
-////                        }
-////                        Toast.makeText(activity, "ACTION", Toast.LENGTH_LONG).show()
-////                        Navigation.findNavController(it)
-////                            .navigate(R.id.phacDoHuyetFragment, bundleDataHuyet)
-                    }
+                var bundleDataHuyet = Bundle().apply {
+                    putString("phacdo", dataHuyetDao ?: "data")
                 }
+                Toast.makeText(activity, "ACTION", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(it)
+                    .navigate(R.id.phacDoHuyetFragment, bundleDataHuyet)
+//                    }
+//                }
             }
         }
     }

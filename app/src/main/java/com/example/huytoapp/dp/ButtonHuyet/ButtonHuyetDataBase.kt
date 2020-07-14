@@ -9,7 +9,7 @@ import com.example.huytoapp.dp.ButtonHuyet.ButtonHuyetDao
 
 @Database(
     entities = [ButtonHuyet::class],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 

@@ -1,13 +1,13 @@
 package com.example.huytoapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
-
 
 class HomeFragment : BaseFragment() {
 
@@ -22,17 +22,11 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun makeCurrentFragment(fragment: Fragment) {
-        requireActivity().supportFragmentManager.beginTransaction().apply {
-            replace(R.id.homeFragment, fragment)
-            commit()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        makeCurrentFragment(pointsFragment)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -46,6 +40,14 @@ class HomeFragment : BaseFragment() {
             }
             true
         }
+    }
+
+    fun makeCurrentFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            replace(R.id.homeFragment, fragment)
+            commit()
+        }
+        Log.d("mess", "thành")
     }
 
     companion object {
