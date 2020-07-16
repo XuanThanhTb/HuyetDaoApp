@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
 
-    val listPasswork: ArrayList<String> = arrayListOf<String>("123123", "123456", "1234567")
+    val listPasswork: ArrayList<String> = arrayListOf<String>("1","123123", "123456", "1234567")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
