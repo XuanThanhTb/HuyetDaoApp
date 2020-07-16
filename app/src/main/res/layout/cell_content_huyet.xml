@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textMeaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ý nghĩa đặt tên huyêt"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentMeaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content Meaning" />
+
+    <TextView
+        android:id="@+id/textIndexHuyet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vị trí huyệt"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentIndexHuyet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content Index Huyet" />
+
+    <TextView
+        android:id="@+id/textGiaiPhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Giải phẫu:"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentGiaiPhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content Giải Phãu" />
+
+    <TextView
+        android:id="@+id/textDatTinhHuyet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đặt tính huyệt"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentDatTinhHuyet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content Đặt Tính Huyệt" />
+
+    <TextView
+        android:id="@+id/textCongDung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Công dụng"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentCongDun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Contetn Công Dụng" />
+
+    <TextView
+        android:id="@+id/textChuTri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chủ trị - phối huyệt"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentPhoiHuyet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Contetnt Chu Trị - Phối Huyệt" />
+
+    <TextView
+        android:id="@+id/textCachCham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cách Châm"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textContentCachCham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content Cách Châm" />
+</LinearLayout>

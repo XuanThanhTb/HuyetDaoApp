@@ -189,7 +189,10 @@ class PhacDoHuyet(var list: java.util.ArrayList<String>, val activity: MainActiv
         }
 
         holder.itemView.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.contentHuyetFragment)
+            val dataContentHuyet = Bundle().apply {
+                putString("tenHuyet", list[position])
+            }
+            Navigation.findNavController(it).navigate(R.id.contentHuyetFragment, dataContentHuyet)
             Toast.makeText(activity, "${list[position]}", Toast.LENGTH_LONG).show()
         }
     }

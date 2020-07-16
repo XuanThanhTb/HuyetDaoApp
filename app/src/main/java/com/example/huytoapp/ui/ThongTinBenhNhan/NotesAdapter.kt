@@ -29,7 +29,7 @@ class NotesAdapter(private val huyetData: List<Huyet>) :
 
         holder.view.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToPhacDoHuyetFragment()
-//            action. = huyetData[position]
+//            action.toString() = huyetData[position]
             Navigation.findNavController(it).navigate(action)
         }
     }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +14,9 @@ import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import kotlinx.android.synthetic.main.cell_detail_home_anh_mot.view.*
 import kotlinx.android.synthetic.main.fragment_detail_home.*
 
-class DetailHomeFragment : BaseFragment() {
 
-    var listAnh = arrayListOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9)
+class DetailHomeFragment : BaseFragment() {
+    var listAnh = arrayListOf<Int>(1, 2, 3, 5, 6, 7, 8, 9)
 
     var listDataHuyet: ArrayList<DataHuyet> = arrayListOf(
         DataHuyet(id = 1, color = "#FFEB3B", nameHuyet = "Thừa Khấp"),
@@ -31,6 +32,16 @@ class DetailHomeFragment : BaseFragment() {
         arguments?.let {
             touchData = it?.getString("detailHome")
         }
+//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+//
+//        }
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    //
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
 
@@ -93,11 +104,13 @@ class DetailHomeFragment : BaseFragment() {
                 var itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.cell_detail_home_anh_sau, parent, false)
                 return ViewHolderSau(itemView)
-            } else if (viewType == 7) {
-                var itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.cell_detail_home_anh_bay, parent, false)
-                return ViewHolderBay(itemView)
-            } else if (viewType == 8) {
+            }
+//            else if (viewType == 7) {
+//                var itemView = LayoutInflater.from(parent.context)
+//                    .inflate(R.layout.cell_detail_home_anh_bay, parent, false)
+//                return ViewHolderBay(itemView)
+//            }
+            else if (viewType == 8) {
                 var itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.cell_detail_home_anh_tam, parent, false)
                 return ViewHolderTam(itemView)
@@ -116,7 +129,7 @@ class DetailHomeFragment : BaseFragment() {
 //        else if (listAnh[position] == 4) 4
             else if (listAnh[position] == 5) 5
             else if (listAnh[position] == 6) 6
-            else if (listAnh[position] == 7) 7
+//            else if (listAnh[position] == 7) 7
             else if (listAnh[position] == 8) 8
             else 9
         }
@@ -125,7 +138,7 @@ class DetailHomeFragment : BaseFragment() {
             if (listAnh[position] == 1) {
                 onPushDataHuyet(
                     idButton = holder.itemView.buttonDenHuyet1,
-                    dataHuyetDao = "Thừa mang"
+                    dataHuyetDao = "Trung Phủ"
                 )
             }
             if (listAnh[position] == 2) {
@@ -134,18 +147,18 @@ class DetailHomeFragment : BaseFragment() {
             if (listAnh[position] == 3) {
 
             }
-            if (listAnh[position] == 4) {
-
-            }
+//            if (listAnh[position] == 4) {
+//
+//            }
             if (listAnh[position] == 5) {
 
             }
             if (listAnh[position] == 6) {
 
             }
-            if (listAnh[position] == 7) {
-
-            }
+//            if (listAnh[position] == 7) {
+//
+//            }
             if (listAnh[position] == 8) {
 
             }
