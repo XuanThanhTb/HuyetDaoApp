@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class DetailHomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         arguments?.let {
             touchData = it?.getString("detailHome")
         }
@@ -87,9 +89,10 @@ class DetailHomeFragment : BaseFragment() {
                 return ViewHolderMot(itemView)
             } else if (viewType == 2) {
                 var itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.cell_detail_home_anh_hai, parent, false)
+                    .inflate(R.layout.cell_detail_home_anh_mot, parent, false)
                 return ViewHolderHai(itemView)
-            } else if (viewType == 3) {
+            }
+            else if (viewType == 3) {
                 var itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.cell_detail_home_anh_ba, parent, false)
                 return ViewHolderBa(itemView)
