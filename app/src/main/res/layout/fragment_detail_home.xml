@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,111 +8,192 @@
     android:orientation="vertical"
     tools:context=".DetailHomeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-
-
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_mot" />
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_nhat"
-                 />
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#C82121" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#C82121" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_hai" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_hai" />
+        <View
+            android:id="@+id/view1"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#3AF111" />
 
-            <View
-                android:id="@+id/view1"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#3AF111" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_ba" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_ba" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#30392E" />
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#30392E" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_bon" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_nam" />
+        <View
+            android:id="@+id/view3"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#1B308F" />
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#1B308F" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_sau" />
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_sau" />
+        <View
+            android:id="@+id/view4"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#1B308F" />
 
-            <View
-                android:id="@+id/view4"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#1B308F" />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_bay" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_bay" />
+        <View
+            android:id="@+id/view5"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
 
-            <View
-                android:id="@+id/view5"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#E67F6E" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_tam" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_tam" />
-            <View
-                android:id="@+id/view6"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#E67F6E" />
+        <View
+            android:id="@+id/view6"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_400sdp"
-                android:src="@drawable/anh_thu_chin" />
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi" />
 
-            <View
-                android:id="@+id/view7"
-                android:layout_width="@dimen/_320sdp"
-                android:layout_height="@dimen/_300sdp"
-                android:background="#E67F6E" />
+        <View
+            android:id="@+id/view7"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_mot" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_hai" />
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_ba" />
+
+        <View
+            android:id="@+id/view10"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_bon" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
 
 
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_nam" />
+
+        <View
+            android:id="@+id/view12"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foregroundGravity="fill"
+            android:src="@drawable/anh_muoi_sau" />
+
+        <View
+            android:id="@+id/view13"
+            android:layout_width="@dimen/_320sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:background="#E67F6E" />
+    </LinearLayout>
 </ScrollView>
