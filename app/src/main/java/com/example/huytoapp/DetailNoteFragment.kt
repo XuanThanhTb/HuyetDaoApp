@@ -2,6 +2,7 @@ package com.example.huytoapp
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 
@@ -26,6 +27,7 @@ class DetailNoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "Detail Note"
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail_note, container, false)
     }

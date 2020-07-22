@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,16 +32,22 @@ class PhacDoHuyetFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         arguments?.let {
             dataHuyetDao = it?.getString("phacdo")
             if (dataHuyetDao != null) list.add(dataHuyetDao.toString()) else return@let
         }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "Phác Đồ Điều Trị"
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_phac_do_huyet, container, false)
     }

@@ -1,20 +1,20 @@
 package com.example.huytoapp
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
+import com.example.huytoapp.ui.ThongTinBenhNhan.toast
 
 
 class DetailHomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 //            val callback: OnBackPressedCallback =
 //                object : OnBackPressedCallback(true /* enabled by default */) {
 //                    override fun handleOnBackPressed() {
@@ -29,6 +29,8 @@ class DetailHomeFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "Detail Home"
+
         return inflater.inflate(R.layout.fragment_detail_home, container, false)
     }
 }

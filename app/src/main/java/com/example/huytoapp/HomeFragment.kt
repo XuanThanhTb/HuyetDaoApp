@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.huytoapp.ui.ThongTinBenhNhan.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -23,12 +24,18 @@ class HomeFragment : BaseFragment() {
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         makeCurrentFragment(pointsFragment)
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity).supportActionBar?.title = "Châm Cứu"
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -37,7 +44,6 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-
                 R.id.points -> makeCurrentFragment(pointsFragment)
                 R.id.note -> makeCurrentFragment(note)
             }
